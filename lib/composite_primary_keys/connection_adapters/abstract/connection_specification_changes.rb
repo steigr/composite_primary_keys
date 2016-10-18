@@ -12,7 +12,7 @@ module ActiveRecord
     def self.establish_connection(spec = nil)
       spec     ||= ActiveRecord::ConnectionHandling::DEFAULT_ENV.call.to_sym
       resolver =   ConnectionAdapters::ConnectionSpecification::Resolver.new configurations
-      spec     =   resolver.spec(spec, self == Base ? "primary" : name)
+      spec     =   resolver.spec(spec)
       self.connection_specification_name = spec.name
 
       # CPK
